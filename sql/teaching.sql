@@ -304,6 +304,9 @@ CREATE TABLE `sys_role`  (
 INSERT INTO `sys_role` VALUES (1, '超级管理员', 'admin', 1, '1', 1, 1, '0', '0', 'admin', '2022-11-16 17:39:18', '', NULL, '超级管理员');
 INSERT INTO `sys_role` VALUES (2, '教师', 'common', 2, '2', 1, 1, '0', '0', 'admin', '2022-11-16 17:39:18', 'admin', '2023-04-24 17:04:34', '普通角色');
 INSERT INTO `sys_role` VALUES (100, '科员', 'member', 0, '1', 1, 1, '0', '0', 'admin', '2023-04-24 13:59:29', 'admin', '2023-04-25 13:09:29', NULL);
+INSERT INTO `sys_role` VALUES (101, '教研教材审核', 'teach_textbook_audit', 3, '1', 1, 1, '0', '0', 'admin', '2023-05-16 13:59:29', 'admin', '2023-05-17 13:09:29', NULL);
+INSERT INTO `sys_role` VALUES (102, '教研论文审核', 'teach_thesis_audit', 4, '1', 1, 1, '0', '0', 'admin', '2023-05-16 13:59:29', 'admin', '2023-05-17 13:09:29', NULL);
+INSERT INTO `sys_role` VALUES (103, '获奖成果审核', 'achievement_audit', 5, '1', 1, 1, '0', '0', 'admin', '2023-05-16 13:59:29', 'admin', '2023-05-17 13:09:29', NULL);
 
 -- ----------------------------
 -- Table structure for sys_role_menu
