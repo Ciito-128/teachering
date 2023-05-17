@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.teaching.system.mapper.SysRewardMapper">
+
+    <resultMap type="SysReward" id="SysRewardResult">
+        <result property="id"    column="id"    />
+        <result property="name"    column="name"    />
+        <result property="type"    column="type"    />
+        <result property="addTime"    column="add_time"    />
+        <result property="img"    column="img"    />
+        <result property="status"    column="status"    />
+        <result property="fileId"    column="file_id"    />
+        <result property="fileName"    column="file_name"    />
+        <result property="userId"    column="user_id"    />
+        <result property="userName"    column="user_name"    />
+    </resultMap>
+
+    <sql id="selectSysRewardVo">
+        select id, name, type, add_time, img, status, file_id, file_name, user_id, user_name from sys_reward
+    </sql>
+
+    <select id="selectSysRewardList" parameterType="SysReward" resultMap="SysRewardResult">
+        <include refid="selectSysRewardVo"/>
+        <where>
+            <if test="name != null  and name != ''"> and name like concat('%', #{name}, '%')</if>
+            <if test="type != null  and type != ''"> and type = #{type}</if>
+            <if test="addTime != null "> and add_time = #{addTime}</if>
+            <if test="img != null  and img != ''"> and img = #{img}</if>
+            <if test="status != null  and status != ''"> and status = #{status}</if>
+            <if test="fileId != null "> and file_id = #{fileId}</if>
+            <if test="fileName != null  and fileName != ''"> and file_name like concat('%', #{fileName}, '%')</if>
+            <if test="userId != null "> and user_id = #{userId}</if>
+            <if test="userName != null  and userName != ''"> and user_name like concat('%', #{userName}, '%')</if>
+        </where>
+    </select>
+
+    <select id="selectSysRewardById" parameterType="Long" resultMap="SysRewardResult">
+        <include refid="selectSysRewardVo"/>
+        where id = #{id}
+    </select>
+
+    <insert id="insertSysReward" parameterType="SysReward" useGeneratedKeys="true" keyProperty="id">
+        insert into sys_reward
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="name != null and name != ''">name,</if>
+            <if test="type != null and type != ''">type,</if>
+            <if test="addTime != null">add_time,</if>
+            <if test="img != null and img != ''">img,</if>
+            <if test="status != null">status,</if>
+            <if test="fileId != null">file_id,</if>
+            <if test="fileName != null">file_name,</if>
+            <if test="userId != null">user_id,</if>
+            <if test="userName != null">user_name,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="name != null and name != ''">#{name},</if>
+            <if test="type != null and type != ''">#{type},</if>
+            <if test="addTime != null">#{addTime},</if>
+            <if test="img != null and img != ''">#{img},</if>
+            <if test="status != null">#{status},</if>
+            <if test="fileId != null">#{fileId},</if>
+            <if test="fileName != null">#{fileName},</if>
+            <if test="userId != null">#{userId},</if>
+            <if test="userName != null">#{userName},</if>
+        </trim>
+    </insert>
+
+    <update id="updateSysReward" parameterType="SysReward">
+        update sys_reward
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="name != null and name != ''">name = #{name},</if>
+            <if test="type != null and type != ''">type = #{type},</if>
+            <if test="addTime != null">add_time = #{addTime},</if>
+            <if test="img != null and img != ''">img = #{img},</if>
+            <if test="status != null">status = #{status},</if>
+            <if test="fileId != null">file_id = #{fileId},</if>
+            <if test="fileName != null">file_name = #{fileName},</if>
+            <if test="userId != null">user_id = #{userId},</if>
+            <if test="userName != null">user_name = #{userName},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteSysRewardById" parameterType="Long">
+        delete from sys_reward where id = #{id}
+    </delete>
+
+    <delete id="deleteSysRewardByIds" parameterType="String">
+        delete from sys_reward where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

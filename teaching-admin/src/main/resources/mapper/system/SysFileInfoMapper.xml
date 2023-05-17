@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.teaching.system.mapper.SysFileInfoMapper">
+    
+    <resultMap type="SysFileInfo" id="SysFileInfoResult">
+        <result property="id"    column="id"    />
+        <result property="type"    column="type"    />
+        <result property="fileUrl"    column="file_url"    />
+        <result property="trachingId"    column="traching_id"    />
+        <result property="content"    column="content"    />
+    </resultMap>
+
+    <sql id="selectSysFileInfoVo">
+        select id, type, file_url, traching_id, content from sys_file_info
+    </sql>
+
+    <select id="selectSysFileInfoList" parameterType="SysFileInfo" resultMap="SysFileInfoResult">
+        <include refid="selectSysFileInfoVo"/>
+        <where>  
+            <if test="trachingId != null "> and traching_id = #{trachingId}</if>
+            <if test="content != null  and content != ''"> and content = #{content}</if>
+        </where>
+    </select>
+    
+    <select id="selectSysFileInfoById" parameterType="Long" resultMap="SysFileInfoResult">
+        <include refid="selectSysFileInfoVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertSysFileInfo" parameterType="SysFileInfo" useGeneratedKeys="true" keyProperty="id">
+        insert into sys_file_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="type != null">type,</if>
+            <if test="fileUrl != null">file_url,</if>
+            <if test="trachingId != null">traching_id,</if>
+            <if test="content != null and content != ''">content,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="type != null">#{type},</if>
+            <if test="fileUrl != null">#{fileUrl},</if>
+            <if test="trachingId != null">#{trachingId},</if>
+            <if test="content != null and content != ''">#{content},</if>
+         </trim>
+    </insert>
+
+    <update id="updateSysFileInfo" parameterType="SysFileInfo">
+        update sys_file_info
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="type != null">type = #{type},</if>
+            <if test="fileUrl != null">file_url = #{fileUrl},</if>
+            <if test="trachingId != null">traching_id = #{trachingId},</if>
+            <if test="content != null and content != ''">content = #{content},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteSysFileInfoById" parameterType="Long">
+        delete from sys_file_info where id = #{id}
+    </delete>
+
+    <delete id="deleteSysFileInfoByIds" parameterType="String">
+        delete from sys_file_info where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>
