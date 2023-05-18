@@ -304,9 +304,7 @@ CREATE TABLE `sys_role`  (
 INSERT INTO `sys_role` VALUES (1, '超级管理员', 'admin', 1, '1', 1, 1, '0', '0', 'admin', '2022-11-16 17:39:18', '', NULL, '超级管理员');
 INSERT INTO `sys_role` VALUES (2, '教师', 'common', 2, '2', 1, 1, '0', '0', 'admin', '2022-11-16 17:39:18', 'admin', '2023-04-24 17:04:34', '普通角色');
 INSERT INTO `sys_role` VALUES (100, '科员', 'member', 0, '1', 1, 1, '0', '0', 'admin', '2023-04-24 13:59:29', 'admin', '2023-04-25 13:09:29', NULL);
-INSERT INTO `sys_role` VALUES (101, '教研教材审核', 'teach_textbook_audit', 3, '1', 1, 1, '0', '0', 'admin', '2023-05-16 13:59:29', 'admin', '2023-05-17 13:09:29', NULL);
-INSERT INTO `sys_role` VALUES (102, '教研论文审核', 'teach_thesis_audit', 4, '1', 1, 1, '0', '0', 'admin', '2023-05-16 13:59:29', 'admin', '2023-05-17 13:09:29', NULL);
-INSERT INTO `sys_role` VALUES (103, '获奖成果审核', 'achievement_audit', 5, '1', 1, 1, '0', '0', 'admin', '2023-05-16 13:59:29', 'admin', '2023-05-17 13:09:29', NULL);
+INSERT INTO `sys_role` VALUES (101, '审核员', 'auditor', 3, '1', 1, 1, '0', '0', 'admin', '2023-05-16 13:59:29', 'admin', '2023-05-17 13:09:29', NULL);
 
 -- ----------------------------
 -- Table structure for sys_role_menu
@@ -437,9 +435,7 @@ INSERT INTO `sys_user` VALUES (100, NULL, '2022', '2022', '00', '', '', '0', '',
 INSERT INTO `sys_user` VALUES (101, NULL, '科员01', '科员01', '00', '162@qq.com', '15036144556', '0', '', '$2a$10$eMNyMyS1sXqbOG15NFqYmupo8E4LZvp2HAr1Fpas6G.oeEgSXZSHm', '0', '0', '127.0.0.1', '2023-04-25 13:09:37', 'admin', '2023-04-24 17:03:17', '', '2023-04-25 13:09:37', '科员01');
 INSERT INTO `sys_user` VALUES (102, NULL, '老师01', '老师01', '00', '', '', '0', '', '$2a$10$DZovRqILBxHJwlTNJlm8JOBB1PDAJFc/TicuTA5lQkR1l0veOyhJK', '0', '0', '127.0.0.1', '2023-04-25 12:41:20', 'admin', '2023-04-25 12:09:44', '', '2023-04-25 12:41:19', NULL);
 INSERT INTO `sys_user` VALUES (103, NULL, '老师02', '老师02', '00', '2@qq.com', '15039177662', '0', '', '$2a$10$MR.eLBr0L8rRtpixLTDwOOTz4LBCmlQZEzK3q9GqraNZeDX8w4Wa6', '0', '0', '127.0.0.1', '2023-04-25 13:04:33', 'admin', '2023-04-25 12:56:24', '', '2023-04-25 13:04:33', NULL);
-INSERT INTO `sys_user` VALUES (104, NULL, 'user1', '教研教材审核员', '00', '2132@qq.com', '15039477662', '0', '', '$2a$10$MR.eLBr0L8rRtpixLTDwOOTz4LBCmlQZEzK3q9GqraNZeDX8w4Wa6', '0', '0', '127.0.0.1', '2023-05-18 13:04:33', 'admin', '2023-05-18 12:56:24', '', '2023-05-18 13:04:33', NULL);
-INSERT INTO `sys_user` VALUES (105, NULL, 'user2', '教研论文审核员', '00', '1432@qq.com', '15039477772', '0', '', '$2a$10$MR.eLBr0L8rRtpixLTDwOOTz4LBCmlQZEzK3q9GqraNZeDX8w4Wa6', '0', '0', '127.0.0.1', '2023-05-18 13:04:33', 'admin', '2023-05-18 12:56:24', '', '2023-05-18 13:04:33', NULL);
-INSERT INTO `sys_user` VALUES (106, NULL, 'user3', '获奖成果审核员', '00', '1732@qq.com', '15039477672', '0', '', '$2a$10$MR.eLBr0L8rRtpixLTDwOOTz4LBCmlQZEzK3q9GqraNZeDX8w4Wa6', '0', '0', '127.0.0.1', '2023-05-18 13:04:33', 'admin', '2023-05-18 12:56:24', '', '2023-05-18 13:04:33', NULL);
+INSERT INTO `sys_user` VALUES (104, NULL, 'auditor', '审核员', '00', '2132@qq.com', '15039477662', '0', '', '$2a$10$MR.eLBr0L8rRtpixLTDwOOTz4LBCmlQZEzK3q9GqraNZeDX8w4Wa6', '0', '0', '127.0.0.1', '2023-05-18 13:04:33', 'admin', '2023-05-18 12:56:24', '', '2023-05-18 13:04:33', NULL);
 
 -- ----------------------------
 -- Table structure for sys_user_role
@@ -460,7 +456,5 @@ INSERT INTO `sys_user_role` VALUES (101, 100);
 INSERT INTO `sys_user_role` VALUES (102, 2);
 INSERT INTO `sys_user_role` VALUES (103, 2);
 INSERT INTO `sys_user_role` VALUES (104, 101);
-INSERT INTO `sys_user_role` VALUES (105, 102);
-INSERT INTO `sys_user_role` VALUES (106, 103);
 
 SET FOREIGN_KEY_CHECKS = 1;
