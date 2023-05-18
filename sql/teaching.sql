@@ -367,10 +367,12 @@ INSERT INTO `sys_role_menu` VALUES (100, 2022);
 INSERT INTO `sys_role_menu` VALUES (100, 2023);
 INSERT INTO `sys_role_menu` VALUES (100, 2024);
 INSERT INTO `sys_role_menu` VALUES (100, 2025);
-INSERT INTO `sys_role_menu` VALUES (100, 2026);
-INSERT INTO `sys_role_menu` VALUES (100, 2027);
-INSERT INTO `sys_role_menu` VALUES (100, 2029);
-
+INSERT INTO `sys_role_menu` VALUES (101, 2026);
+INSERT INTO `sys_role_menu` VALUES (101, 2027);
+INSERT INTO `sys_role_menu` VALUES (101, 2029);
+INSERT INTO `sys_role_menu` VALUES (101, 2003);
+INSERT INTO `sys_role_menu` VALUES (101, 2015);
+INSERT INTO `sys_role_menu` VALUES (101, 2021);
 -- ----------------------------
 -- Table structure for sys_taeching_info
 -- ----------------------------
